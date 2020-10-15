@@ -37,3 +37,44 @@ def decrypt_caesar(ciphertext: str ="SBWKRQ", shift: int = 3):
              plaintext=plaintext+chr((ord(char)-shift-97)%26+97)
     return plaintext 
 print("decrypted data", decrypt_caesar())
+
+def letter_converter(mode, input_char):
+	abc123 = "abcdefghijklmnopqrstuvwxyz"
+	
+	# Letter to Code
+	if mode == 1	: 
+		found = abc123.find(input_char)
+		if found > -1: return found
+		else		 : return 23
+		
+	# Code to Letter
+	elif mode == 2	: return abc123[int(input_char)]
+
+###-----------------------------------------------------------------
+
+def caesar_breaker_brute_force(cipher):
+	plaintext = ''
+	
+	for key in range(1, 26):
+		plaintext += '[' + str(key) + '] '
+		for char in cipher:
+			ascii_letter = letter_converter(1, char)
+			ascii_letter = (ascii_letter + key) % 26
+			plaintext += letter_converter(2, ascii_letter)
+		plaintext += '\n'
+
+	print(plaintext)
+
+###-----------------------------------------------------------------
+
+while True:
+	cipher = input("Cipher: ").lower()
+	caesar_breaker_brute_force(cipher)
+
+
+
+
+
+
+
+
