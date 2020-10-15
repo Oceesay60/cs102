@@ -1,25 +1,19 @@
 import typing as tp
+#c=(x-n)%26
 
-
-def encrypt_caesar(plaintext: str, shift: int = 3) -> str:
-    """
-    Encrypts plaintext using a Caesar cipher.
-
-    >>> encrypt_caesar("PYTHON")
-    'SBWKRQ'
-    >>> encrypt_caesar("python")
-    'sbwkrq'
-    >>> encrypt_caesar("Python3.6")
-    'Sbwkrq3.6'
-    >>> encrypt_caesar("")
-    ''
-    """
+def encriypt_caesar(plaintext: str = "python3.6:,PYTHON:,python" , shift: int = 3):
     ciphertext = ""
-    # PUT YOUR CODE HERE
+    for char in plaintext:
+        if char ==" ":
+             ciphertext=ciphertext+char
+        elif char.isupper():
+             ciphertext=ciphertext+chr((ord(char)+shift-65)%26+65)
+        else:
+            ciphertext=ciphertext+chr((ord(char)+shift-97)%26+97)
     return ciphertext
+print(" encripted:", encriypt_caesar())
 
-
-def decrypt_caesar(ciphertext: str, shift: int = 3) -> str:
+def decrypt_caesar(ciphertext: str ="SBWKRQ", shift: int = 3):
     """
     Decrypts a ciphertext using a Caesar cipher.
 
@@ -32,15 +26,14 @@ def decrypt_caesar(ciphertext: str, shift: int = 3) -> str:
     >>> decrypt_caesar("")
     ''
     """
+    #alphabet = "abcdefghijklmnopqrstuvwxyz"
     plaintext = ""
-    # PUT YOUR CODE HERE
-    return plaintext
-
-
-def caesar_breaker_brute_force(ciphertext: str, dictionary: tp.Set[str]) -> int:
-    """
-    Brute force breaking a Caesar cipher.
-    """
-    best_shift = 0
-    # PUT YOUR CODE HERE
-    return best_shift
+    for char in ciphertext:
+        if char ==" ":
+             plaintext=plaintext+char
+        elif char.isupper():
+           plaintext=plaintext+chr((ord(char)-shift-65)%26+65)
+        else:
+             plaintext=plaintext+chr((ord(char)-shift-97)%26+97)
+    return plaintext 
+print("decrypted data", decrypt_caesar())
