@@ -36,7 +36,7 @@ def decrypt_caesar(ciphertext: str ="SBWKRQ", shift: int = 3):
         else:
              plaintext=plaintext+chr((ord(char)-shift-97)%26+97)
     return plaintext 
-print("decrypted: ", decrypt_caesar())
+print("decrypted: ", decrypt_caesar()) /n
 
 def letter_converter(mode, input_char):
 	abc123 = "abcdefghijklmnopqrstuvwxyz"
