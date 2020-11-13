@@ -1,7 +1,6 @@
-import typing as tp
 #c=(x-n)%26
 
-def encriypt_caesar(plaintext: str = "python3.6:,PYTHON:,python" , shift: int = 3):
+def encriypt_caesar(plaintext: str = "python3.6 PYTHON python" , shift: int = 3):
     ciphertext = ""
     for char in plaintext:
         if char ==" ":
@@ -13,7 +12,7 @@ def encriypt_caesar(plaintext: str = "python3.6:,PYTHON:,python" , shift: int = 
     return ciphertext
 print(" encripted:", encriypt_caesar())
 
-def decrypt_caesar(ciphertext: str ="SBWKRQ", shift: int = 3):
+def decrypt_caesar(ciphertext: str ="SBWKRQ  sbwkrq  Sbwkrq3.6", shift: int = 3):
     """
     Decrypts a ciphertext using a Caesar cipher.
 
@@ -36,7 +35,8 @@ def decrypt_caesar(ciphertext: str ="SBWKRQ", shift: int = 3):
         else:
              plaintext=plaintext+chr((ord(char)-shift-97)%26+97)
     return plaintext 
-print("decrypted data", decrypt_caesar()) /n
+print("decrypted:", decrypt_caesar()) 
+
 
 
 
