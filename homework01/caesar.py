@@ -13,7 +13,7 @@ def encriypt_caesar(plaintext: str = "python3.6 PYTHON python" , shift: int = 3)
     return ciphertext
 print(" encripted:", encriypt_caesar())
 
-def decrypt_caesar(ciphertext: str ="SBWKRQ  sbwkrq", shift: int = 3):
+def decrypt_caesar(ciphertext: str ="SBWKRQ  sbwkrq Sbwkrq"3.6"", shift: int = 3):
     """
     Decrypts a ciphertext using a Caesar cipher.
 
