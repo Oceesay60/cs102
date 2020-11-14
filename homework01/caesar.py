@@ -1,20 +1,48 @@
-#c=(x-n)%26
+import string
+import typing as tp
 
-def encriypt_caesar(plaintext: str = "python3.6 PYTHON python" , shift: int = 3):
+
+
+
+def encrypt_caesar(plaintext: str, shift: int = 3) -> str:
+    """
+    Encrypts plaintext using a Caesar cipher.
+
+
+    >>> encrypt_caesar("PYTHON")
+    'SBWKRQ'
+    >>> encrypt_caesar("python")
+    'sbwkrq'
+    >>> encrypt_caesar("Python3.6")
+    'Sbwkrq3.6'
+    >>> encrypt_caesar("")
+    ''
+    """
     ciphertext = ""
-    for char in plaintext:
-        if char ==" ":
-             ciphertext=ciphertext+char
-        elif char.isupper():
-             ciphertext=ciphertext+chr((ord(char)+shift-65)%26+65)
+    for x in plaintext:
+        if x != " ":
+            value = string.ascii_uppercase.find(x)
+            if value == -1:
+                value = string.ascii_lowercase.find(x)
+                if value == -1:
+                    ciphertext += x
+                else:
+                    location = (value + shift) % len(string.ascii_lowercase)
+                    ciphertext += string.ascii_lowercase[location]
+            else:
+                location = (value + shift) % len(string.ascii_uppercase)
+                ciphertext += string.ascii_uppercase[location]
         else:
-            ciphertext=ciphertext+chr((ord(char)+shift-97)%26+97)
+            ciphertext += " "
     return ciphertext
-print(" encripted:", encriypt_caesar())
+ 
 
-def decrypt_caesar(ciphertext: str ="SBWKRQ  sbwkrq  Sbwkrq3.6", shift: int = 3):
+
+
+def decrypt_caesar(ciphertext: str, shift: int = 3) -> str:
     """
     Decrypts a ciphertext using a Caesar cipher.
+
 
     >>> decrypt_caesar("SBWKRQ")
     'PYTHON'
@@ -25,23 +53,21 @@ def decrypt_caesar(ciphertext: str ="SBWKRQ  sbwkrq  Sbwkrq3.6", shift: int = 3)
     >>> decrypt_caesar("")
     ''
     """
-    #alphabet = "abcdefghijklmnopqrstuvwxyz"
     plaintext = ""
-    for char in ciphertext:
-        if char ==" ":
-             plaintext=plaintext+char
-        elif char.isupper():
-           plaintext=plaintext+chr((ord(char)-shift-65)%26+65)
+    for x in ciphertext:
+        if x != " ":
+            value = string.ascii_uppercase.find(x)
+            if value == -1:
+                value = string.ascii_lowercase.find(x)
+                if value == -1:
+                    plaintext += x
+                else:
+                    location = (value - shift) % len(string.ascii_lowercase)
+                    plaintext += string.ascii_lowercase[location]
+            else:
+                location = (value - shift) % len(string.ascii_uppercase)
+                plaintext += string.ascii_uppercase[location]
         else:
-             plaintext=plaintext+chr((ord(char)-shift-97)%26+97)
-    return plaintext 
-print("decrypted:", decrypt_caesar()) 
-
-
-
-
-
-
-
-
+            plaintext += " "
+    return plaintext
 
