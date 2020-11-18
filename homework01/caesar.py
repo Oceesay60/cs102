@@ -3,7 +3,6 @@ import typing as tp
 
 
 
-
 def encrypt_caesar(plaintext: str, shift: int = 3) -> str:
     """
     Encrypts plaintext using a Caesar cipher.
@@ -40,6 +39,7 @@ def encrypt_caesar(plaintext: str, shift: int = 3) -> str:
 
 
 def decrypt_caesar(ciphertext: str, shift: int = 3) -> str:
+
     """
     Decrypts a ciphertext using a Caesar cipher.
 
@@ -69,5 +69,44 @@ def decrypt_caesar(ciphertext: str, shift: int = 3) -> str:
                 plaintext += string.ascii_uppercase[location]
         else:
             plaintext += " "
-    return plaintext
+    return plaintext 
+
+
+def letter_converter(mode, input_char):
+	abc123 = "abcdefghijklmnopqrstuvwxyz"
+	
+	# Letter to Code
+	if mode == 1	: 
+		found = abc123.find(input_char)
+		if found > -1: return found
+		else		 : return 23
+		
+	# Code to Letter
+	elif mode == 2	: return abc123[int(input_char)]
+
+###-----------------------------------------------------------------
+
+def caesar_breaker_brute_force(cipher):
+	plaintext = ''
+	
+	for key in range(1, 26):
+		plaintext += '[' + str(key) + '] '
+		for char in cipher:
+			ascii_letter = letter_converter(1, char)
+			ascii_letter = (ascii_letter + key) % 26
+			plaintext += letter_converter(2, ascii_letter)
+		plaintext += '\n'
+
+	print(plaintext)
+
+###-----------------------------------------------------------------
+
+while True:
+	cipher = input("Cipher: ").lower()
+	caesar_breaker_brute_force(cipher)
+
+
+
+
+
 
