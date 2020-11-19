@@ -50,13 +50,13 @@ def decrypt_vigenere(ciphertext: str, keyword: str) -> str:
     return plaintext
 
 
-#if __name__ == '__main__':
-  #  original = string.ascii_letters
-  #  key = 'ACEHKSPZKYREMBZQQSL'
-   # encrypted = encrypt_vigenere(original, key)
-  #  decrypted = decrypt_vigenere(encrypted, key)
+if __name__ == '__main__':
+    original = string.ascii_letters
+    key = 'ACEHKSPZKYREMBZQQSL'
+    encrypted = encrypt_vigenere(original, key)
+    decrypted = decrypt_vigenere(encrypted, key)
 
-   # print(original)
-   # print(encrypted)
-   # print(decrypted)
-  # print(f'Decrypted is equal to orig: {original == decrypted}')
+    print(original)
+    print(encrypted)
+    print(decrypted)
+    print(f'Decrypted is equal to orig: {original == decrypted}')
